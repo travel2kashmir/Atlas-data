@@ -1,0 +1,702 @@
+{
+  "entityDefs": [
+    {
+      "superTypes": [
+        "Infrastructure"
+      ],
+      "name": "cp_system",
+      "description": "The cp_system is a system which is going to have all the folders",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+		{
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "address",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "ip",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "systemOwner",
+          "typeName": "cp_person",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_owner_assignment",
+          "isLegacyAttribute": false
+        },
+        {
+          "name": "systemFolders",
+          "typeName": "cp_folder",
+          "isOptional": false,
+          "cardinality": "SET",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_system_folder_assignment",
+          "isLegacyAttribute": false
+        }
+      ]
+    },
+    {
+      "superTypes": [
+        "Referenceable"
+      ],
+      "name": "cp_person",
+      "description": "The cp_person is a person working for the organisation and can have access to the files as a part of his work.",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+		{
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "email",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "ownerToFolder",
+          "typeName": "cp_folder",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_folder_owner_assignment",
+          "isLegacyAttribute": false
+        },
+        {
+          "name": "ownerToFile",
+          "typeName": "cp_file",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_file_owner_assignment",
+          "isLegacyAttribute": false
+        },
+        {
+          "name": "ownerToSystem",
+          "typeName": "cp_system",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_owner_assignment",
+          "isLegacyAttribute": false
+        }
+      ]
+    },
+    {
+      "superTypes": [
+        "DataSet"
+      ],
+      "name": "cp_folder",
+      "description": "The cp_folder is folder which can be accessed by the person to perform operation on files",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+		{
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "folderOwner",
+          "typeName": "cp_person",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_folder_owner_assignment",
+          "isLegacyAttribute": false
+        },
+        {
+          "name": "filesInFolder",
+          "typeName": "cp_file",
+          "isOptional": false,
+          "cardinality": "SET",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_folder_file_assignment",
+          "isLegacyAttribute": false
+        },
+        {
+          "name": "folderInSystem",
+          "typeName": "cp_system",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_system_folder_assignment",
+          "isLegacyAttribute": false
+        }
+      ]
+    },
+    {
+      "superTypes": [
+        "DataSet"
+      ],
+      "name": "cp_file",
+      "description": "The cp_file is file store in a folder can be accessed by the person to perform opeation",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "size",
+          "typeName": "int",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "fileType",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "filePermission",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "fileOwner",
+          "typeName": "cp_person",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 2147483647,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_file_owner_assignment"
+        },
+        {
+          "name": "worksheetsInFile",
+          "typeName": "array<cp_worksheet>",
+          "isOptional": true,
+          "cardinality": "SET",
+          "valuesMinCount": 0,
+          "valueMaxCount": 2147483647,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "realtionshipTypeName": "cp_worksheet_file_assignment"
+        },
+        {
+          "name": "folderOfFile",
+          "typeName": "cp_folder",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_folder_file_assignment",
+          "isLegacyAttribute": false
+        }
+      ]
+    },
+    {
+      "superTypes": [
+        "DataSet"
+      ],
+      "name": "cp_worksheet",
+      "description": "The cp_worksheet is a worksheet in the file which is located in the folder and can be accessed by the person for operations",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "size",
+          "typeName": "int",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "sheetDescription",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "columnsInWorksheet",
+          "typeName": "array<cp_column>",
+          "isOptional": false,
+          "cardinality": "SET",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 2147483647,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "columnToWorksheetAssignment"
+        },
+        {
+          "name": "fileOfWorksheet",
+          "typeName": "cp_file",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": -1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "cp_worksheet_file_assignment",
+          "isLegacyAttribute": false
+        }
+      ]
+    },
+    {
+      "superTypes": [
+        "DataSet"
+      ],
+      "name": "cp_column",
+      "description": "The cp_column is a column field which will hold the data.",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "columnDescription",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "isMandatory",
+          "typeName": "boolean",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "isKey",
+          "typeName": "boolean",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "keyType",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": -1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        }
+      ],
+      "relationshipDefs": [
+        {
+          "name": "columnOfWorksheet",
+          "typeName": "cp_column",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 2147483647,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1,
+          "relationshipTypeName": "columnToWorksheetAssignment"
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "category": "RELATIONSHIP",
+      "name": "generic_folder_owner_assignment",
+      "description": "relationship generic_folder_owner_assignment",
+      "relationshipCategory": "ASSOCIATION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_folder",
+        "name": "folderOwner",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_person",
+        "name": "ownerToFolder",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "file_person_assignment",
+      "description": "The relationship between a file and person",
+      "relationshipCategory": "ASSOCIATION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_file",
+        "name": "fileOwner",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_person",
+        "name": "ownerToFile",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "folder_file_assignment",
+      "description": "The relationship between a folder and file",
+      "relationshipCategory": "ASSOCIATION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_folder",
+        "name": "filesInFolder",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_file",
+        "name": "folderOfFile",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "file_worksheet_assignment",
+      "description": "The relationship between a file and sheet",
+      "relationshipCategory": "COMPOSITION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_file",
+        "name": "worksheetsInFile",
+        "isContainer": true,
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_worksheet",
+        "name": "fileOfWorksheet",
+        "isContainer": false,
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "worksheet_column_assignment",
+      "description": "The relationship between a sheet and column",
+      "relationshipCategory": "COMPOSITION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_worksheet",
+        "name": "columnsInWorksheet",
+        "isContainer": true,
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_column",
+        "name": "columnOfWorksheet",
+        "isContainer": false,
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "cp_system_owner_assignment",
+      "description": "relationship generic_system_owner_assignment",
+      "relationshipCategory": "ASSOCIATION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_system",
+        "name": "systemOwner",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_person",
+        "name": "ownerToSystem",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": false
+      }
+    },
+    {
+      "category": "RELATIONSHIP",
+      "name": "folders_to_system_assignment",
+      "description": "relationship generic_system_owner_assignment",
+      "relationshipCategory": "ASSOCIATION",
+      "attributeDefs": [],
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "cp_system",
+        "name": "systemFolders",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": false
+      },
+      "endDef2": {
+        "type": "cp_folder",
+        "name": "folderInSystem",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": false
+      }
+    }
+  ]
+}

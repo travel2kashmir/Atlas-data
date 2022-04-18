@@ -1,0 +1,48 @@
+{
+  "entities": [
+    {
+      "typeName": "cp_person",
+      "guid": -1000,
+      "createdBy": "admin",
+      "attributes": {
+        "name": "John Jacob",
+        "qualifiedName": "john-jacob-cp",
+        "email": "john.jacob@cp.com",
+        "ownerToFolder": [
+          {
+            "guid": "-200",
+            "typeName": "cp_folder"
+          }
+        ],
+		
+        "ownerToFile": [
+          {
+            "guid": "-300",
+            "typeName": "cp_file"
+          }
+        ]
+      }
+    }
+  ],
+  "referredEntities": {
+    "-200": {
+      "guid": "-200",
+      "typeName": "cp_folder",
+      "attributes": {
+        "qualifiedName": "sales-folder-cp",
+        "name": "Sales"
+      }
+    },
+    "-300": {
+      "guid": "-300",
+      "typeName": "cp_file",
+      "attributes": {
+        "qualifiedName": "sales-march-file-cp",
+        "name": "Sales Report - March 2022",
+        "fileType": "CSV",
+        "filePermission": "RWX",
+        "size": "20"
+      }
+    }
+  }
+}
